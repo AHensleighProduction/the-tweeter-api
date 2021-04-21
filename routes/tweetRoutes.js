@@ -4,7 +4,9 @@ import {
   postTweet,
   addComment,
   addLike,
-  deleteTweet
+  deleteTweet,
+  deleteComment,
+  removeLike
 } from '../controllers/tweetController.js';
 const router = express.Router();
 
@@ -17,6 +19,10 @@ router.route('/comments/:id')
   .put(addComment)
 router.route('/likes/:id')
   .put(addLike);
+router.route('/comments/:tweetId/:commentId')
+  .delete(deleteComment);
+router.route('/likes/:id')
+  .delete(removeLike);
 
 
 export default router;

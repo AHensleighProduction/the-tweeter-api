@@ -59,3 +59,32 @@ export const deleteTweet = asyncHandler (async (req, res) => {
     throw new Error('Tweet not found')
   }
 })
+
+export const deleteComment = asyncHandler (async (req, res) => {
+  const tweet = await Tweet.findById(req.params.tweetId);
+
+  // console.log(tweet.comments)
+  if (tweet) {
+    tweet.comments.remove({ _id: req.params.commentId })
+    await tweet.save();
+    res.json({ message: 'Comment removed' })
+  } else {
+    res.status(404)
+    throw new Error('Tweet not found')
+  }
+})
+
+export const removeLike = asyncHandler (async (req, res) => {
+  const tweet = await Tweet.findById(req.params.id);
+
+  // console.log(tweet.comments)
+  if (tweet) {
+    const likes = tweet.likes -= 1;
+    tweet.likes = likes;
+    await tweet.save();
+    res.json({ message: 'Like removed' })
+  } else {
+    res.status(404)
+    throw new Error('Tweet not found')
+  }
+})
