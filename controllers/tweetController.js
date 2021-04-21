@@ -48,3 +48,14 @@ export const addLike = asyncHandler (async (req, res) => {
     throw new Error('Tweet not found');
   }
 })
+
+export const deleteTweet = asyncHandler (async (req, res) => {
+  const tweet = await Tweet.findById(req.params.id);
+  if (tweet) {
+    await tweet.remove()
+    res.json({ message: 'Tweet removed' })
+  } else {
+    res.status(404)
+    throw new Error('Tweet not found')
+  }
+})

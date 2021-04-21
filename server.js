@@ -5,7 +5,7 @@ import connectDB from './config/db.js';
 import tweetRoutes from './routes/tweetRoutes.js';
 import colors from 'colors';
 import path from 'path';
-import fs from 'fs';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 dotenv.config();
 connectDB();
@@ -22,6 +22,9 @@ app.use('/tweets', tweetRoutes);
 app.get('/', (req, res) => {
   res.send(`Welcome to The Tweeter API! Go to https://github.com/ingridclaire/the-tweeter-api/blob/master/README.md for documentation on using this API`)
 })
+
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, console.log(`server running on port ${PORT}`.bold.yellow));
 

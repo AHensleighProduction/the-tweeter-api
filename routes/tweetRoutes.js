@@ -3,13 +3,16 @@ import {
   getTweets,
   postTweet,
   addComment,
-  addLike
+  addLike,
+  deleteTweet
 } from '../controllers/tweetController.js';
 const router = express.Router();
 
 router.route('/')
   .get(getTweets)
   .post(postTweet);
+router.route(':/id')
+  .delete(deleteTweet);
 router.route('/comments/:id')
   .put(addComment)
 router.route('/likes/:id')
