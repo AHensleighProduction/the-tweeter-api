@@ -17,14 +17,11 @@ npm install
 ```
 
 ## API
-| METHOD | ENDPOINT                            | Description             | NOTES                 |
-| ------ | ----------------------------------- | ----------------------- | --------------------- |
-| GET    | /tweets                             | get all tweets          |                       |
-| POST   | /tweets                             | post a tweet            |                       |
-| PUT    | /tweets/comments/:id                | add a comment to a tweet| use id of tweet       |
-| PUT    | /tweets/likes/:id                   | like a tweet            | use id of tweet       |
-| DELETE    | /tweets/comments/:tweetId/:commentId| delete a comment        | use tweet & comment id|
-| DELETE | /tweets/likes/:tweetId              | unlike a tweet          | use id of tweet       |
-| DELETE | /tweets/:id                         | delete a tweet          |  use id of tweet      |
-
+| METHOD | ENDPOINT                            | Description                   | 
+| ------ | ----------------------------------- | ----------------------------- | 
+| POST   | /users                              | Create an account             |
+| POST   | /users/login                        | Log into an existing account  |
+| PUT    | /users/id                           | Handle Transactions           | 
+| POST   | /users/admin                        | Get all Users                 | 
+    
 
